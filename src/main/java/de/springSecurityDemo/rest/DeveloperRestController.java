@@ -27,4 +27,15 @@ public class DeveloperRestController {
                 .findFirst()
                 .orElse(null);
     }
+
+    @PostMapping
+    public Developer create(@RequestBody Developer developer) {
+        this.developers.add(developer);
+        return developer;
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteById(@PathVariable Long id) {
+        this.developers.removeIf(developer -> developer.getId().equals(id));
+    }
 }
